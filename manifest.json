@@ -6,7 +6,7 @@
   "permissions": [
     "storage",
     "tabs",
-    "file:///C:/projector/google_extensions/snipintext/test.html"
+    "https://developer.chrome.com"
   ],
   "background": {
     "scripts": ["background.js"],
@@ -21,8 +21,9 @@
   },
   "content_scripts": [
     {
-      "matches": "file:///C:/projector/google_extensions/snipintext/test.html",
-      "js": ["content.js","jquery-3.3.1.min.js"]
+      "matches": ["https://developer.chrome.com/*","https://vk.com/*","http://localhost/*"],
+      "js": ["jquery-3.3.1.min.js","./content/content.js","./content/content_snippet_handler.js"],
+      "css": ["./content/content.css"]
     }
   ],
   "icons": {
