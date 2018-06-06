@@ -6,27 +6,23 @@ let area = $("textarea");
 function select(){
 	$("textarea").addClass("selector");
 	$("textarea").click((e)=>{
-		console.log(e.target).val();
-		e.target.val("anything you wanned");
 		area.removeClass("selector");
-		areas.off("click");
-		var rightArrowParents = [],
-			elm,
-			entry;
-
-		for (elm = this; elm; elm = elm.parentNode) {
-			entry = elm.tagName.toLowerCase();
-			if (entry === "html") {
-				break;
-			}
-			if (elm.className) {
-				entry += "." + elm.className.replace(/ /g, ".");
-			}
-			rightArrowParents.push(entry);
-		}
-		rightArrowParents.reverse();
-		console.log(rightArrowParents.join(" "));
-		return false;
+		area.off("click");
+		let parentlist = $( e.target ).parents()
+			.map(function() {
+				console.log(this);
+				console.log("CLASS:",$(this).attr("class"));
+				let ids = this.id ? (this.id.split(" ").length > 1 ? "" : "#"+this.id.split(" ")[0]) : "";//more than one id is invalid
+				let classes = $(this).attr("class") ? "."+$(this).attr("class").split(" ").join(".") : "";//select all classes and join them in selector string
+				return this.tagName + ids + classes;
+			})
+			.get()
+			.reverse()
+			.join( ">" );
+		console.log(e.target.nodeName);
+		$(parentlist+">"+e.target.nodeName).val("WOW!");
+		// console.log($("body>div>span>div>div").val("SHIT"));
+		console.log(parentlist);
 	});
 }
 select();
