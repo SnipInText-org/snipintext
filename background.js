@@ -1,14 +1,15 @@
-chrome.runtime.onInstalled.addListener(function() {
-	chrome.storage.sync.set({color: "#3aa757"}, function() {
-		console.log("The color is green.");
-	});
-	chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
-		chrome.declarativeContent.onPageChanged.addRules([{
-			conditions: [new chrome.declarativeContent.PageStateMatcher({
-				pageUrl: {hostEquals: "develope;r.chrome.com"},
-			})
-			],
-			actions: [new chrome.declarativeContent.ShowPageAction()]
-		}]);
-	});
+// chrome.runtime.onInstalled.addListener(function () {
+//     chrome.declarativeContent.onPageChanged.removeRules(undefined, function () {
+//         chrome.declarativeContent.onPageChanged.addRules([{
+//             conditions: [new chrome.declarativeContent.PageStateMatcher({
+//                 pageUrl: {hostEquals: "localhost"},
+//             })
+//             ],
+//             actions: [new chrome.declarativeContent.ShowPageAction()]
+//         }]);
+//     });
+// });
+
+chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
+    chrome.pageAction.show(tabs[0].id);
 });
