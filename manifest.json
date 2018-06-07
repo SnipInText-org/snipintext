@@ -5,9 +5,7 @@
   "manifest_version": 2,
   "permissions": [
     "storage",
-    "tabs",
-    "https://developer.chrome.com"
-  ],
+    "tabs" ],
   "background": {
     "scripts": ["background.js"],
     "persistent": false
@@ -22,7 +20,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://developer.chrome.com/*","https://vk.com/*","http://localhost/*"],
+      "matches": ["https://developer.chrome.com/*","https://vk.com/*","https://localhost/*","https://fttb.bee.vimpelcom.ru/*"],
       "js": ["jquery-3.3.1.min.js","./content/content.js","./content/content_snippet_handler.js"],
       "css": ["./content/content.css"]
     }

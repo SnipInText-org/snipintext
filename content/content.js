@@ -4,9 +4,9 @@
 let $area = $("textarea");
 
 function select() {
-    $area.addClass("selector");
+    $area.addClass("selectorator");
     $area.click((e) => {
-        $area.removeClass("selector");//don't highlight :hover
+        $area.removeClass("selectorator");//don't highlight :hover
         $area.off("click");
         let superSelector = $(e.target)
             .parents()
@@ -19,11 +19,11 @@ function select() {
             .reverse()
             .join(">");
         console.log(e.target.nodeName);
-        $(superSelector + ">" + e.target.nodeName).val("WOW!");
-    });
+        $(superSelector + ">" + e.target.nodeName).val("<br>\n<br>\n");
+console.log(superSelector);   });
 }
 
-select();
+select();console.log("LOADED");
 // loop();
 // if(request.act === "select element"){
 // }
