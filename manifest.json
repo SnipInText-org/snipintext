@@ -11,16 +11,12 @@
     "persistent": false
   },
   "options_page": "/options/options.html",
-  "page_action": {
-    "default_popup": "/popup/popup.html",
-    "default_icon": {
-      "16" : "./images/icon.png"
-    },
-    "default_title": "snipintext"
+  "browser_action": {
+    "default_popup": "/popup/popup.html"
   },
   "content_scripts": [
     {
-      "matches": ["https://developer.chrome.com/*","https://vk.com/*","https://localhost/*","https://fttb.bee.vimpelcom.ru/*"],
+      "matches": ["https://developer.chrome.com/*","https://vk.com/*","http://localhost/*"],
       "js": ["jquery-3.3.1.min.js","./content/content.js","./content/content_snippet_handler.js"],
       "css": ["./content/content.css"]
     }

@@ -22,8 +22,8 @@ function select() {
         $(superSelector + ">" + e.target.nodeName).val("<br>\n<br>\n");
 console.log(superSelector);   });
 }
-
-select();console.log("LOADED");
+select();
+console.log("LOADED");
 // loop();
 // if(request.act === "select element"){
 // }
