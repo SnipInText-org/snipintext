@@ -1,6 +1,3 @@
-// chrome.runtime.onMessage.addListener(
-// 	function(request, sender, sendResponse) {
-//   });
 let $area = $("textarea");
 
 function select(cb) {
@@ -23,24 +20,14 @@ function select(cb) {
       cb(superSelector);
     });
 }
+
 Message.select.in(()=>select((ss)=>Message.select.out(ss)));
 
 // chrome.runtime.onMessage.addListener(
 //   function(request, sender, sendResponse) {
-//     console.log(sender.tab ?
-//                 "from a content script:" + sender.tab.url :
-//                 "from the extension");
 //     if (request.action === "select"){
 //       select(sendResponse)
 //       console.log("ACTION IS: ", request.action);
 //     }
 //   });
-
-// loop();
-// if(request.act === "select element"){
-// }
-// console.log(sender.tab ?
-// 	"from a content script:" + sender.tab.url :
-// 	"from the extension");
-// if (request.greeting == "hello")
-// 	sendResponse({farewell: "goodbye"});
+// select(()=>chrome.runtime.sendMessage({action: "select", value: superSelector}));
