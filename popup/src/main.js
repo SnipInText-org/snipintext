@@ -19,3 +19,6 @@ new Vue({
   template: '<App/>',
   components: { App }
 })
+module.exports = {
+  mode: 'production'
+}
