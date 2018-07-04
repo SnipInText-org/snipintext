@@ -1,3 +1,0 @@
-const handlesnippets = function(element){
-  
-};
