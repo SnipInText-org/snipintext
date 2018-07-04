@@ -3,27 +3,39 @@
 //   });
 let $area = $("textarea");
 
-function select() {
+function select(cb) {
     $area.addClass("selectorator");
     $area.click((e) => {
-        $area.removeClass("selectorator");//don't highlight :hover
-        $area.off("click");
-        let superSelector = $(e.target)
-            .parents()
-            .map(function () {
-                let ids = this.id ? (this.id.split(" ").length > 1 ? "" : "#" + this.id.split(" ")[0]) : "";//more than one id is invalid
-                let classes = $(this).attr("class") ? "." + $(this).attr("class").split(" ").join(".") : "";//select all classes and join them in selector string
-                return this.tagName + ids + classes;
-            })
-            .get()
-            .reverse()
-            .join(">");
-        console.log(e.target.nodeName);
-        $(superSelector + ">" + e.target.nodeName).val("<br>\n<br>\n");
-console.log(superSelector);   });
+      $area.removeClass("selectorator");//don't highlight :hover
+      $area.off("click");
+      let superSelector = $(e.target)
+          .parents()
+          .map(function () {
+              let ids = this.id ? (this.id.split(" ").length > 1 ? "" : "#" + this.id.split(" ")[0]) : "";//more than one id is invalid
+              let classes = $(this).attr("class") ? "." + $(this).attr("class").split(" ").join(".") : "";//select all classes and join them in selector string
+              return this.tagName + ids + classes;
+          })
+          .get()
+          .reverse()
+          .join(">");
+      $(superSelector + ">" + e.target.nodeName).val("<br>\n<br>\n");
+      // console.log(superSelector);
+      cb(superSelector);
+    });
 }
-select();
-console.log("LOADED");
+Message.select.in(()=>select((ss)=>Message.select.out(ss)));
+
+// chrome.runtime.onMessage.addListener(
+//   function(request, sender, sendResponse) {
+//     console.log(sender.tab ?
+//                 "from a content script:" + sender.tab.url :
+//                 "from the extension");
+//     if (request.action === "select"){
+//       select(sendResponse)
+//       console.log("ACTION IS: ", request.action);
+//     }
+//   });
+
 // loop();
 // if(request.act === "select element"){
 // }
