@@ -17,7 +17,7 @@
   "content_scripts": [
     {
       "matches": ["http://localhost/*"],
-      "js": ["jquery-3.3.1.min.js","./api/messages.js","./api/data/model.js","./content/content.js","./content/content_snippet_handler.js"],
+      "js": ["jquery-3.3.1.min.js","./api/messages.js","./api/data/model.js","./content/content.js"],
       "css": ["./content/content.css"]
     }
   ],
