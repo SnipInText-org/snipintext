@@ -1,5 +1,6 @@
 
 function select() {
+  console.log("preselect");
   return new Promise((ok,notok)=>{
     console.log("SELECTING");
     let $area = $("textarea");
@@ -23,8 +24,8 @@ function select() {
 }
 
 Message.select.in()
-  .then(()=>select())
-  .then((ss)=>Ig.add("test 1 long name 3",ss,"localhost"))
+  .then(select)
+  .then((ss)=>{console.log("selected!!!");Ig.add("test 1 long name 3",ss,"localhost")})
   .catch((e)=>console.error("What the fuck: \n",e));
 
 // chrome.runtime.onMessage.addListener(
