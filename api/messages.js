@@ -1,12 +1,14 @@
 const Message = {
   select : {
-    in : function(cb){
-      chrome.runtime.onMessage.addListener(
-        function(request, sender, sendResponse) {
-          if (request.action === "select"){
-            cb(request.value);
-          }
-        });
+    in : function(){
+      return new Promise ((ok,notok)=>{
+        chrome.runtime.onMessage.addListener(
+          function(request, sender, sendResponse) {
+            if (request.action === "select"){
+              ok(request.value);
+            }
+          });
+      })
     },
     out : function(val){
       if(val && typeof(val) != "string"){

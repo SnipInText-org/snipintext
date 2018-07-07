@@ -1,0 +1,7 @@
+*{
+  margin: 0;
+  padding: 1px;
+}
+header, #ig-list{
+  white-space: nowrap;
+}

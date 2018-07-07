@@ -1,7 +1,3 @@
-let ig = new Ig([]);
-console.log("IG: ", ig.get().join("||"));
-Message.select.in((path)=>{console.log("IG: ", ig.get()); console.log(path); ig.add("testing", path, "localhost").catch((err)=>console.error("this element is already taken: ",err))});
+Ig.download().then(()=>Ig.get().map((x)=>JSON.stringify(x)).join("||"));
 
-document.getElementById("selectorator").onclick = function(e){
-  Message.select.out();
-}
+document.getElementById("selectoratorka").onclick = ()=>Message.select.out();
