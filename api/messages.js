@@ -1,6 +1,6 @@
 const Message = {
   select : {
-    in : function(){
+    in : function(cb){
       return new Promise ((ok,notok)=>{
         chrome.runtime.onMessage.addListener(
           function(request, sender, sendResponse) {

@@ -1,0 +1,28 @@
+{
+  "name": "snipintext-tests",
+  "version": "1.0.0",
+  "description": "google chrome extension to create snippets in text areas on any webpage\r ***\r ### Functionality\r - select input groups on page (**IG**)\r - collect snippet groups (**SG**)\r - connect snippet group to an input group\r #### User Actions\r - IG (displayed in popup for a current page)\r   - select\r     - add (from button [select] in popup page)\r     - edit - reselect element (from button [no button yet] in popup page)\r     - delete - unbind all SG from selected IG and forget it's path\r   - manage\r - SG\r   - add (using INAREA console user interface )\r   - delete\r   - Manage snippets in groups - IG (from extension settings page)",
+  "main": "jest",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "jest": "^23.4.1"
+  },
+  "devDependencies": {
+    "sinon-chrome": "^2.3.2"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grenudi/snipintext.git"
+  },
+  "author": "grenudi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/grenudi/snipintext/issues"
+  },
+  "homepage": "https://github.com/grenudi/snipintext#readme"
+}

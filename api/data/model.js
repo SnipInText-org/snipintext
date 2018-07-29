@@ -18,7 +18,7 @@ var Ig = new function(){
   let list = [];
   let subscribers = [];//subscribers to storage change
   let dispatch = function(){
-    subscribers.forEach((subscriber)=>subscriber());
+    subscribers.forEach(subscriber=>subscriber());
   }
 
   // chrome.storage.sync.set({ig: []});
@@ -28,13 +28,15 @@ var Ig = new function(){
   this.upload = function(){
     return new Promise((ok,notok)=>{
       chrome.storage.sync.set({ig: list}, function(){
+        if(prevList !== list)
+          dispatch();
         ok();
       });
     });
   }
   this.download = function(){//TODO add .then
     return new Promise((ok,notok)=>{
-      chrome.storage.sync.get(['ig'],function(res){
+      chrome.storage.sync.get(['ig',"шоугодно"],function(res){
         prevList = list;
         list = res.ig;
 
@@ -45,9 +47,12 @@ var Ig = new function(){
       })
     })
   }
-  this.isConflict = function(obj){
-    this.download();
-    return list.find((x)=>x.name === obj.name || x.path === obj.path)
+  this.devastate = function(){
+    list = [];
+    return new Promise((ok, notok)=>{
+      this.upload();
+      ok();
+    })
   }
   this.isObj = function(obj){
     return obj.name && obj.path && (Object.getOwnPropertyName(obj).length === 2 || Object.getOwnPropertyName(obj).length === 3 && obj.domain)
