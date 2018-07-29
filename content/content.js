@@ -40,26 +40,13 @@ function inSelect(n){
     .then((ss)=>{
       console.log("selected!!!");
       if(ss){
-        inAreaConsole(ss,"введи имя для этого поля: ");
+        inAreaConsole(ss,"введи имя для этого поля: ")
+          .then((input)=>{
+            console.log("ENTERED: "+"|"+input+"|");
+        });
       }
       inSelect(++n)
     })
     .catch((e)=>console.error("What the fuck: \n",e));
 }
 inSelect(0);
-
-chrome.runtime.onMessage.addListener(
-  function(request, sender, sendResponse) {
-    if (request.action === "select"){
-      console.log("SHIT")
-    }
-  });
-
-// chrome.runtime.onMessage.addListener(
-//   function(request, sender, sendResponse) {
-//     if (request.action === "select"){
-//       select(sendResponse)
-//       console.log("ACTION IS: ", request.action);
-//     }
-//   });
-// select(()=>chrome.runtime.sendMessage({action: "select", value: superSelector}));

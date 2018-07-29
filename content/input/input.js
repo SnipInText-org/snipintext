@@ -1,7 +1,9 @@
+//TODO:
+//add rules, add notifications
+
 const inAreaConsole = function(path,message){
   return new Promise((ok,notok)=>{
-    let input = "";
-    const prev = $(path);
+    const prev = $(path).val();
     let curr = $(path);
 
     curr.val(message);
@@ -12,7 +14,9 @@ const inAreaConsole = function(path,message){
             event.preventDefault();
           break;
         case 13:
-          break;
+          event.preventDefault();
+          let input = curr.val();
+          ok(input.slice(message.length, input.length));
         case 27:
           curr.val(prev);
           curr.off("keydown");
@@ -21,6 +25,5 @@ const inAreaConsole = function(path,message){
     });
     //exclude message
     //enter, esc
-    ok(input);
   })
 }
