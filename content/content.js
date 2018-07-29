@@ -41,9 +41,8 @@ function inSelect(n){
       console.log("selected!!!");
       if(ss){
         inAreaConsole(ss,"введи имя для этого поля: ")
-          .then((input)=>{
-            console.log("ENTERED: "+"|"+input+"|");
-        });
+          .then((input)=>{console.log("ENTERED: "+"|"+input+"|");})
+          .catch((err)=>console.log("The Name Entering Canceled"));
       }
       inSelect(++n)
     })

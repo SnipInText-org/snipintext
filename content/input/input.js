@@ -18,6 +18,7 @@ const inAreaConsole = function(path,message){
           let input = curr.val();
           ok(input.slice(message.length, input.length));
         case 27:
+          notok();
           curr.val(prev);
           curr.off("keydown");
           break;
