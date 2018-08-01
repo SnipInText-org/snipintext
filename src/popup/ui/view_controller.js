@@ -1,6 +1,5 @@
 Ig.subscribe(function(){
   renderList();
-  console.log(Ig.get().map((x)=>JSON.stringify(x)).join("||"));
 });
 
 const renderList = function(){

@@ -1,11 +1,14 @@
 
 function select() {
   console.log("selecting");
-  let $area = $("textarea");
+
   return new Promise((ok,notok)=>{
+    let $area = $("textarea");
     $area.addClass("selectorator");
+
     $("body").click((e) => {
       let superSelector = undefined;
+      console.log("Selected:",e.target.tagName.toLowerCase());
       if(e.target.tagName.toLowerCase() == "textarea"){
         superSelector = $(e.target)
           .parents()
@@ -26,6 +29,7 @@ function select() {
 }
 
 
+
 /*
 // TODO:
 check for the path
@@ -37,13 +41,25 @@ function inSelect(n){
   console.log("лютый пиздец:",n);
   Message.select.in()
     .then(select)
-    .then((ss)=>{
-      console.log("selected!!!");
-      if(ss){
-        inAreaConsole(ss,"введи имя для этого поля: ")
-          .then((input)=>{console.log("ENTERED: "+"|"+input+"|");})
-          .catch((err)=>console.log("The Name Entering Canceled"));
+    .then((path)=>{
+      console.log("selected!!");
+      if(path){
+        console.log("textarea!");
+
+        inAreaConsole(path,"введи имя для этого поля: ")
+            .then((input)=>{
+              const pack = {name: input, path, domain:"localhostality"};
+              console.log("ENTERED: "+"|"+input+"|");
+              Ig.merge(pack)
+                .catch((err)=>{
+                  console.log(err);
+                  Ig.add(input,path,"localhost");
+                  console.log("the element is uploaded");
+                });
+            })
+          .catch((err)=>console.error(err));
       }
+      console.log("Selection finished!");
       inSelect(++n)
     })
     .catch((e)=>console.error("What the fuck: \n",e));
